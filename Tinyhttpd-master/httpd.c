@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "sds.h"
+#include "thpool.h"
 
 #define ISspace(x) isspace((int)(x))
 
@@ -539,6 +540,7 @@ int main(void)
     struct sockaddr_in client_name;
     socklen_t  client_name_len = sizeof(client_name);
     pthread_t newthread;
+    threadpool thpool = thpool_init(4); //初始化一个含有4个线程的线程池
 
     server_sock = startup(&port);
     printf("httpd running on port %d\n", port);
@@ -551,8 +553,10 @@ int main(void)
         if (client_sock == -1)
             error_die("accept");
         /* accept_request(&client_sock); */
-        if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)(intptr_t)client_sock) != 0)
-            perror("pthread_create");
+        // if (pthread_create(&newthread , NULL, (void *)accept_request, (void *)(intptr_t)client_sock) != 0)
+        //     perror("pthread_create");
+        if(thpool_add_work(thpool, (void*)accept_request, (void*)(uintptr_t)client_sock))
+            perror("thpool_add_work");  //把任务放入创建的线程池里
     }
 
     close(server_sock);
