@@ -26,6 +26,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "sds.h"
 
 #define ISspace(x) isspace((int)(x))
 
@@ -40,7 +41,8 @@ void cat(int, FILE *);
 void cannot_execute(int);
 void error_die(const char *);
 void execute_cgi(int, const char *, const char *, const char *);
-int get_line(int, char *, int);
+sds get_line_sds(int sock); //函数声明补全
+int get_line(int, char*, int);
 void headers(int, const char *);
 void not_found(int);
 void serve_file(int, const char *);
@@ -52,10 +54,13 @@ void unimplemented(int);
  * return.  Process the request appropriately.
  * Parameters: the socket connected to the client */
 /**********************************************************************/
+/*
+由于新函数get_line_sds不需要传固定长度的数组了，所以accept_request也需要修改
+*/
 void accept_request(void *arg)
 {
     int client = (intptr_t)arg;
-    char buf[1024];
+    sds buf = NULL; //改变量定义
     size_t numchars;
     char method[255];
     char url[255];
@@ -66,7 +71,8 @@ void accept_request(void *arg)
                        * program */
     char *query_string = NULL;
 
-    numchars = get_line(client, buf, sizeof(buf));
+    buf = get_line_sds(client);
+    numchars = sdslen(buf); //改获取请求行的方式
     i = 0; j = 0;
     while (!ISspace(buf[i]) && (i < sizeof(method) - 1))
     {
@@ -130,6 +136,7 @@ void accept_request(void *arg)
             execute_cgi(client, path, method, query_string);
     }
 
+    sdsfree(buf);   //释放内存
     close(client);
 }
 
@@ -341,6 +348,44 @@ int get_line(int sock, char *buf, int size)
     buf[i] = '\0';
 
     return(i);
+}
+
+// 使用sds更新后的get_line函数
+sds get_line_sds(int sock)
+{
+    sds line = sdsempty();
+    char c = '\0';
+    int n;
+
+    while (1)
+    {
+        n = recv(sock, &c, 1, 0);
+
+        if (n > 0)
+        {
+            if (c == '\r')
+            {
+                n = recv(sock, &c, 1, MSG_PEEK);
+                if ((n > 0) && (c == '\n'))
+                    recv(sock, &c, 1, 0);
+                else
+                    c = '\n';
+            }
+
+            if (c == '\n') 
+            {
+                break;
+            }
+
+            line = sdscatlen(line, &c, 1);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return line;
 }
 
 /**********************************************************************/
