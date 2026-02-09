@@ -1,0 +1,79 @@
+Command: ab -n 2000 -c 1000 -k http://127.0.0.1:4000/
+
+Original result:
+
+Server Software:        jdbhttpd/0.1.0
+Server Hostname:        127.0.0.1
+Server Port:            4000
+
+Document Path:          /
+Document Length:        218 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   0.870 seconds
+Complete requests:      2000
+Failed requests:        0
+Keep-Alive requests:    0
+Total transferred:      572000 bytes
+HTML transferred:       436000 bytes
+Requests per second:    2298.44 [#/sec] (mean)
+Time per request:       435.078 [ms] (mean)
+Time per request:       0.435 [ms] (mean, across all concurrent requests)
+Transfer rate:          641.95 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   20  40.9      0     132
+Processing:     0   42  98.9      1     473
+Waiting:        0   38  97.7      1     473
+Total:          0   62 122.3      1     510
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      3
+  75%      7
+  80%    167
+  90%    203
+  95%    435
+  98%    441
+  99%    494
+ 100%    510 (longest request)
+
+Refactored result:
+
+Server Software:        jdbhttpd/0.1.0
+Server Hostname:        127.0.0.1
+Server Port:            4000
+
+Document Path:          /
+Document Length:        218 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   0.202 seconds
+Complete requests:      2000
+Failed requests:        0
+Keep-Alive requests:    0
+Total transferred:      572000 bytes
+HTML transferred:       436000 bytes
+Requests per second:    9917.29 [#/sec] (mean)
+Time per request:       100.834 [ms] (mean)
+Time per request:       0.101 [ms] (mean, across all concurrent requests)
+Transfer rate:          2769.87 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    4   9.4      0      32
+Processing:     0    2   3.2      1      33
+Waiting:        0    2   2.6      0      11
+Total:          0    6  12.1      1      38
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      1
+  75%      2
+  80%      5
+  90%     36
+  95%     37
+  98%     37
+  99%     37
+ 100%     38 (longest request)

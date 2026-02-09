@@ -1,0 +1,39 @@
+Command: ab -n 10000 -c 1000 http://127.0.0.1:4000/
+
+Result: 
+
+Server Software:        jdbhttpd/0.1.0
+Server Hostname:        127.0.0.1
+Server Port:            4000
+
+Document Path:          /
+Document Length:        218 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   0.750 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      2860000 bytes
+HTML transferred:       2180000 bytes
+Requests per second:    13325.78 [#/sec] (mean)
+Time per request:       75.043 [ms] (mean)
+Time per request:       0.075 [ms] (mean, across all concurrent requests)
+Transfer rate:          3721.85 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   4.7      0      32
+Processing:     0    2   5.0      0      32
+Waiting:        0    2   4.6      0      25
+Total:          0    3   9.2      0      47
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      1
+  80%      1
+  90%      4
+  95%     36
+  98%     43
+  99%     44
+ 100%     47 (longest request)
