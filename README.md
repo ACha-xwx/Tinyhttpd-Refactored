@@ -2,7 +2,7 @@
 
 本项目是针对经典 Tinyhttpd 的安全重构版本。主要工作是将 Redis 的 SDS（Simple Dynamic String）库集成到服务器中，从工程层面杜绝了原版在处理 HTTP 请求头时的缓冲区溢出风险。
 
-## 🛡️ 安全重构亮点 (Security Enhancements)
+### 安全重构特点
 
 * **内存安全重构**：核心函数 `get_line` 被重构为 `get_line_sds`。通过 SDS 动态扩容机制，替代了原版不安全的固定长度 `char` 数组。
 * **性能突破**：在 Ubuntu 22.04 环境下，通过 `ab` 压力测试，成功达到 **13000+ RPS** 的吞吐量，且在高并发下保持零错误率。
@@ -11,7 +11,7 @@
 
 ---
 
-## 📖 原项目技术文档 (Original Documentation)
+### 原项目技术文档
 
 ### 每个函数的作用：
 * **accept_request**: 处理从套接字上监听到的一个 HTTP 请求。
@@ -39,6 +39,6 @@
 
 ---
 
-### 📜 原作者说明 (Credits)
+### 原作者说明 (Credits)
 This software is copyright 1999 by J. David Blackstone. Permission is granted to redistribute and modify this software under the terms of the GNU General Public License.
 Apache it's not. But I do hope that this program is a good educational tool for those interested in http/socket programming.
