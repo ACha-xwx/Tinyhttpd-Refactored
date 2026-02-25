@@ -1,41 +1,23 @@
-/* SDSLib 2.0 -- A C dynamic strings library
- *
- * Copyright (c) 2006-2015, Salvatore Sanfilippo <antirez at gmail dot com>
- * Copyright (c) 2015, Redis Labs, Inc
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- *   * Redistributions of source code must retain the above copyright notice,
- *     this list of conditions and the following disclaimer.
- *   * Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *   * Neither the name of Redis nor the names of its contributors may be used
- *     to endorse or promote products derived from this software without
- *     specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+/* sdsalloc.h -- 内存分配底层抽象
+ * 作用: 将 SDS 的内存管理与具体的系统实现解耦。
  */
 
-/* SDS allocator selection.
- *
- * This file is used in order to change the SDS allocator at compile time.
- * Just define the following defines to what you want to use. Also add
- * the include of your alternate allocator if needed (not needed in order
- * to use the default libc allocator). */
+#ifndef __SDSALLOC_H
+#define __SDSALLOC_H
+
+#include <stdlib.h>
+
+/* 思考笔记：为什么不直接用 malloc？
+ * 这里加一层宏定义的封装，不仅仅是为了好看，主要是为了给自己留条后路：
+ * 1. 灵活性：如果以后觉得系统自带的分配器慢了，想换成 jemalloc 或 tcmalloc，
+ * 只需要改这几个宏，不用去 sds.c 里一行行查找替换。
+ * 2. 调试便利：可以在这层宏里挂钩子（Hook），监控每次内存申请和释放，
+ * 这对排查 Web 服务器长时间运行后的内存泄漏（Memory Leak）非常有用。
+ * 这算是 C 语言项目里解耦底层资源的标准写法。
+ */
 
 #define s_malloc malloc
 #define s_realloc realloc
 #define s_free free
+
+#endif
