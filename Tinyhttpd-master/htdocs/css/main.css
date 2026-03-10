@@ -801,9 +801,28 @@ ul li,
 ol li {
     margin: 8px 0;
 }
+.OwO .OwO-body {
+    width: 350px !important; 
+    min-width: 300px !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+    background: #fff !important;
+}
+.OwO .OwO-body .OwO-items-show {
+    height: 250px !important;
+    max-height: 250px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow-y: auto !important;
+}
+.OwO .OwO-body .OwO-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    height: 35px !important;
+}
 @font-face {
-    font-family: orange juice 2.0;
-    src: https://github.com/ACha-xwx/ACha-xwx.github.io/raw/refs/heads/master/fonts/orange%20juice%202.0.ttf;
+    font-family: "";
+    src: url();
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -978,5 +997,57 @@ ol li {
     ul,
     ol {
         padding-left: 20px;
+    }
+}
+
+@media (min-width: 900px) {
+    #menu #desktop-menu a[href="https://write.acha.xx.kg"] {
+        float: right; 
+        margin-right: 60px; 
+        padding: 0 18px;                           
+        height: 32px;                              
+        line-height: 30px;                         
+        margin-top: 9px;                           
+        border-radius: 20px;                       
+        backdrop-filter: blur(4px);                
+        font-weight: bold !important; 
+        transition: all 0.3s ease; 
+        
+        /* 变为黑透质感 */
+        color: #000000 !important;                 
+        background: rgba(0, 0, 0, 0.08);     
+        border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    #menu #desktop-menu a[href="https://write.acha.xx.kg"]:hover {
+        background: rgba(0, 0, 0, 0.15);     
+        transform: translateY(-2px);               
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    }
+
+    #menu.menu-color #desktop-menu a[href="https://write.acha.xx.kg"] {
+        color: #ffffff !important;                 
+        background: rgba(255, 255, 255, 0.15);     
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    
+    #menu.menu-color #desktop-menu a[href="https://write.acha.xx.kg"]:hover {
+        background: rgba(255, 255, 255, 0.35);     
+    }
+}
+
+@media (max-width: 900px) {
+    #menu #mobile-menu a[href="https://write.acha.xx.kg"] {
+        font-weight: 900 !important;
+        color: #000000 !important;
+        background: rgba(0, 0, 0, 0.08);
+        padding: 4px 24px;
+        border-radius: 20px;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    #menu.menu-color #mobile-menu a[href="https://write.acha.xx.kg"] {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.15);
     }
 }

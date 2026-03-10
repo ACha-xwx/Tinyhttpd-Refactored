@@ -1,16 +1,21 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+
+  <head>
     <meta charset="utf-8" />
-    <title>阿猹的小窝</title>
+    <title>
+      阿猹的小窝
+    </title>
     <meta name="author" content="ACha_" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <link rel="icon" href="/images/avatar.jpg" />
     <link rel="preconnect" href="https://s4.zstatic.net" />
 <script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
@@ -46,19 +51,20 @@
 
 <link rel="stylesheet" href="/css/main.css" />
 
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body>
+  <meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
     <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/cat.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+      <transition name="fade">
+        <div id="loading" v-show="loading">
+          <div id="loading-circle">
+            <h2>LOADING</h2>
+            <p>加载中...</p>
+            <img src="/images/cat.gif" />
+          </div>
+        </div>
+      </transition>
+      <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/">
             <span>阿猹的小窝</span>
@@ -87,6 +93,16 @@
         <a href="/tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/groceries">
+            <i class="fa-solid fa-box-open fa-fw"></i>
+            <span>&ensp;Groceries Box</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
+            <i class="fa-solid fa-feather-pointed fa-fw"></i>
+            <span>&ensp;Write!</span>
         </a>
         
     </nav>
@@ -143,6 +159,24 @@
                     </div>
                 </a>
                 
+                <a href="/groceries">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Groceries Box</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-feather-pointed fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Write!</div>
+                    </div>
+                </a>
+                
             </div>
         </transition>
     </nav>
@@ -152,7 +186,7 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
+          <div id="home-head">
     <div
         id="home-background"
         ref="homeBackground"
@@ -179,6 +213,40 @@
 >
     <div id="home-posts">
         
+
+<div class="post">
+    <a href="/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/">
+        <h2 class="post-title">收拾，整理，以及翻新...</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/3/8
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=2094438860&auto=0&height=66"></iframe>
+
+
+
+<p>是一些碎碎念啊……</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/" class="go-post">阅读全文</a>
+</div>
 
 <div class="post">
     <a href="/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/">
@@ -222,6 +290,15 @@
     </a>
     <div class="category-and-date">
         
+        <span class="category">
+            <a href="/categories/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                自我介绍
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -242,7 +319,16 @@
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
         
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" style="color: #00a596">自我介绍</a>
+        </span>
         
     </div>
     <a href="/2024/12/29/%E9%98%BF%E7%8C%B9%E7%9A%84%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D-%E7%AC%AC%E4%B8%80%E7%AF%87%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%81/" class="go-post">阅读全文</a>
@@ -283,6 +369,14 @@
                 <a target="_blank" rel="noopener" href="https://qm.qq.com/q/wOTNnOm22I">Tencent QQ</a>
             </div>
             
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://space.bilibili.com/1232388510">BiliBili</a>
+            </div>
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://github.com/ACha-xwx">Github</a>
+            </div>
+            
         </div>
         
     </div>
@@ -292,11 +386,11 @@
     
 </div>
 
-            <footer id="footer">
+          <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
-            2020 - 2025 阿猹的小窝
+            2024 - 2026 阿猹的小窝
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -307,19 +401,302 @@
             <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
         </div>
         
+        <div>
+            备案号：
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20269876">萌ICP备20269876号</a>
+            
+        </div>
+        
     </div>
 </footer>
 
         </div>
         
-        <transition name="fade">
+          <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
+              <img id="preview-content" ref="previewContent" />
             </div>
-        </transition>
-        
+          </transition>
+          
     </div>
     <script src="/js/main.js"></script>
     
-</body>
-</html>
+          <div id="dashboard-toggle" onclick="toggleDashboard()">
+            <span id="toggle-icon" style="transition: transform 0.3s ease; display: inline-block;">🎵</span>
+          </div>
+          <div id="dashboard-container">
+            <div id="fps-monitor">
+              <span id="fps-dot"></span>
+              <span id="fps-text">FPS: --</span>
+            </div>
+
+            <div id="traffic-monitor">
+              <span>👁️ 总浏览数: <span id="busuanzi_value_site_pv" class="data-num">...</span></span>
+              <span>👤 总访客数: <span id="busuanzi_value_site_uv" class="data-num">...</span></span>
+            </div>
+
+            <meting-js server="netease" type="playlist" id="17820803221" fixed="false" mini="false" order="list"
+              loop="all" list-folded="true" theme="#00ff00">
+            </meting-js>
+          </div>
+
+          <style>
+            #dashboard-container {
+              position: fixed;
+              bottom: 80px;
+              left: 20px;
+              z-index: 9999;
+              width: 360px;
+              background: rgba(255, 255, 255, 0.85);
+              backdrop-filter: blur(15px);
+              -webkit-backdrop-filter: blur(15px);
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 12px;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+              overflow: hidden;
+              font-family: inherit;
+              transform-origin: bottom left;
+              transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
+            #fps-monitor {
+              padding: 10px 15px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              color: #333;
+              font-size: 14px;
+              font-weight: bold;
+            }
+
+            #fps-dot {
+              width: 8px;
+              height: 8px;
+              background: currentColor;
+              border-radius: 50%;
+              margin-right: 8px;
+              box-shadow: 0 0 6px currentColor;
+              animation: blink 1.5s infinite;
+            }
+
+            #traffic-monitor {
+              padding: 8px 15px;
+              display: flex;
+              justify-content: space-between;
+              font-size: 12px;
+              color: #555;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            #dashboard-toggle {
+              position: fixed;
+              bottom: 20px;
+              left: 20px;
+              z-index: 10000;
+              width: 44px;
+              height: 44px;
+              background: rgba(255, 255, 255, 0.85);
+              backdrop-filter: blur(15px);
+              -webkit-backdrop-filter: blur(15px);
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 50%;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 20px;
+              color: #333;
+              transition: all 0.3s ease;
+            }
+
+            #dashboard-toggle:hover {
+              transform: scale(1.1);
+            }
+
+            .dashboard-hidden {
+              opacity: 0 !important;
+              transform: translateY(20px) scale(0.9) !important;
+              pointer-events: none !important;
+            }
+
+            .data-num {
+              font-weight: bold;
+              color: #0078d7;
+            }
+
+            .aplayer {
+              margin: 0 !important;
+              background: transparent !important;
+              box-shadow: none !important;
+              color: #333 !important;
+            }
+
+            .aplayer .aplayer-info {
+              border-bottom: none !important;
+              padding: 10px !important;
+            }
+
+            .aplayer .aplayer-info .aplayer-music .aplayer-title {
+              color: #111 !important;
+              font-size: 14px !important;
+              font-weight: bold;
+            }
+
+            .aplayer .aplayer-info .aplayer-music .aplayer-author {
+              color: #666 !important;
+            }
+
+            .aplayer .aplayer-list ol li {
+              border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+            }
+
+            .aplayer .aplayer-list ol li:hover {
+              background: rgba(0, 0, 0, 0.04) !important;
+            }
+
+            .aplayer .aplayer-list ol li.aplayer-list-light {
+              background: rgba(0, 0, 0, 0.08) !important;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-title {
+              color: #222 !important;
+              font-weight: bold;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-author {
+              color: #777 !important;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-index {
+              color: #999 !important;
+            }
+
+            .aplayer .aplayer-lrc:before,
+            .aplayer .aplayer-lrc:after {
+              display: none !important;
+            }
+
+            @keyframes blink {
+
+              0%,
+              100% {
+                opacity: 1;
+              }
+
+              50% {
+                opacity: 0.3;
+              }
+            }
+
+            @media screen and (max-width: 768px) {
+              #dashboard-container {
+                width: calc(100vw - 30px) !important;
+                left: 15px !important;
+                bottom: 75px !important;
+              }
+
+              #fps-monitor,
+              #traffic-monitor {
+                padding: 6px 12px !important;
+              }
+
+              #fps-text {
+                font-size: 13px !important;
+              }
+
+              .aplayer .aplayer-list {
+                max-height: 200px !important;
+              }
+            }
+          </style>
+
+          <script>
+              (function () {
+                let lastTime = performance.now();
+                let frame = 0;
+                const fpsText = document.getElementById('fps-text');
+                const fpsDot = document.getElementById('fps-dot');
+                function updateFPS() {
+                  const now = performance.now();
+                  frame++;
+                  if (now - lastTime >= 1000) {
+                    const currentFps = Math.round((frame * 1000) / (now - lastTime));
+                    if (fpsText) fpsText.innerText = `FPS: ${currentFps}`;
+                    if (currentFps >= 55) {
+                      if (fpsText) fpsText.style.color = '#10b981';
+                      if (fpsDot) fpsDot.style.color = '#10b981';
+                    } else if (currentFps >= 30) {
+                      if (fpsText) fpsText.style.color = '#f59e0b';
+                      if (fpsDot) fpsDot.style.color = '#f59e0b';
+                    } else {
+                      if (fpsText) fpsText.style.color = '#ef4444';
+                      if (fpsDot) fpsDot.style.color = '#ef4444';
+                    }
+                    frame = 0;
+                    lastTime = now;
+                  }
+                  requestAnimationFrame(updateFPS);
+                }
+                updateFPS();
+              })();
+            function toggleDashboard() {
+              const dashboard = document.getElementById('dashboard-container');
+              const icon = document.getElementById('toggle-icon');
+              if (dashboard.classList.contains('dashboard-hidden')) {
+                dashboard.classList.remove('dashboard-hidden');
+                icon.innerHTML = '✖';
+                icon.style.transform = 'rotate(90deg)';
+              } else {
+                dashboard.classList.add('dashboard-hidden');
+                icon.innerHTML = '🎵';
+                icon.style.transform = 'rotate(0deg)';
+              }
+            }
+            document.getElementById('dashboard-container').classList.add('dashboard-hidden');
+          </script>
+          <canvas id="fireworks"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999"></canvas>
+
+          <script>
+            var OriginTitle = document.title;
+            var titleTime;
+            document.addEventListener('visibilitychange', function () {
+              if (document.hidden) {
+                document.title = '快回来呀 ヾ(≧へ≦)〃';
+                clearTimeout(titleTime);
+              } else {
+                document.title = '欢迎光临 ヾ(≧▽≦*)o';
+                titleTime = setTimeout(function () { document.title = OriginTitle; }, 1000);
+              }
+            });
+
+            const canvas = document.getElementById('fireworks');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
+            window.addEventListener('mousemove', (e) => {
+              for (let i = 0; i < 2; i++) {
+                particles.push({
+                  x: e.clientX, y: e.clientY, size: Math.random() * 3 + 1,
+                  spX: (Math.random() - 0.5) * 2, spY: (Math.random() - 0.5) * 2,
+                  color: `hsl(${Math.random() * 360}, 50%, 50%)`, alpha: 1
+                });
+              }
+            });
+            function animate() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              particles.forEach((p, i) => {
+                p.x += p.spX; p.y += p.spY; p.alpha -= 0.02;
+                if (p.alpha <= 0) return particles.splice(i, 1);
+                ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+              });
+              requestAnimationFrame(animate);
+            }
+            animate();
+          </script>
+  </body>
+  </html>

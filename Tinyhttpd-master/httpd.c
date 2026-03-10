@@ -151,7 +151,6 @@ void accept_request(void *arg) {
         query_string = url;
         while ((*query_string != '?') && (*query_string != '\0')) query_string++;
         if (*query_string == '?') {
-            cgi = 1;
             *query_string = '\0';
             query_string++;
         }
@@ -168,8 +167,6 @@ void accept_request(void *arg) {
         not_found(client);
     } else {
         if ((st.st_mode & S_IFMT) == S_IFDIR) strcat(path, "/index.html");
-        // 只要文件有执行权限，就当做 CGI 脚本来跑
-        if ((st.st_mode & S_IXUSR) || (st.st_mode & S_IXGRP) || (st.st_mode & S_IXOTH)) cgi = 1;
         
         if (!cgi) serve_file(client, path);
         else execute_cgi(client, path, method, query_string);

@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      新年快乐！！ | 阿猹的小窝
+      Groceries Box 杂货箱 | 阿猹的小窝
     </title>
     <meta name="author" content="ACha_" />
     <meta name="description" content="" />
@@ -192,27 +192,67 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
           <div class="article">
     <div>
-        <h1>新年快乐！！</h1>
+        <h1>Groceries Box 杂货箱</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/12/31
+            2026/3/9
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1>新年快乐！！！</h1>
+        <p>这里堆放着一些我亲手打磨的“小零碎”。 有些是用来消磨时间的，有些是用来解决问题的，它们都在这里闪闪发光。</p>
+<div class="groceries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
+  <a href="/dino/index.html" style="text-decoration: none; color: inherit;">
+    <div class="item-card" style="border: 1px solid #e0e0e0; border-radius: 15px; padding: 20px; background: #fff; transition: all 0.3s cubic-bezier(.25,.8,.25,1); position: relative; overflow: hidden;">
+      <div style="font-size: 2rem; margin-bottom: 10px;">🦖</div>
+      <h3 style="margin: 0 0 10px 0; color: #333;">Dino Run</h3>
+      <p style="font-size: 0.85em; color: #777; line-height: 1.6;">一个基于HTML，十分经典的恐龙快跑小游戏。</p>
+      <div style="margin-top: 15px; font-size: 0.8em; font-weight: bold; color: #ff9800;"># 游戏 # HTML</div>
+    </div>
+  </a>
 
-<p>马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！</p>
-<p>春节可能会有新歌噢！</p>
-<p>阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！</p>
-<p>新年快乐鸭！~</p>
+<a href="/balloon/" style="text-decoration: none; color: inherit;">
+    <div class="item-card" style="border: 1px solid #e0e0e0; border-radius: 15px; padding: 20px; background: #fff; transition: all 0.3s cubic-bezier(.25,.8,.25,1); position: relative; overflow: hidden;">
+      <div style="font-size: 2rem; margin-bottom: 10px;">🎈</div>
+      <h3 style="margin: 0 0 10px 0; color: #333;">Hot Air Balloon</h3>
+      <p style="font-size: 0.85em; color: #777; line-height: 1.6;">一个复刻 Google Play 专属断网小彩蛋的小程序。拖动气球，躲避尖刺平台。</p>
+      <div style="margin-top: 15px; font-size: 0.8em; font-weight: bold; color: #607d8b;"># 游戏 # HTML # HTML5 Canvas</div>
+    </div>
+  </a>
 
+  <a href="https://mail.acha.xx.kg" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="item-card" style="border: 1px solid #e0e0e0; border-radius: 15px; padding: 20px; background: #fff; transition: all 0.3s cubic-bezier(.25,.8,.25,1); position: relative; overflow: hidden;">
+      <div style="font-size: 2rem; margin-bottom: 10px;">📮</div>
+      <h3 style="margin: 0 0 10px 0; color: #333;">私人云端邮局</h3>
+      <p style="font-size: 0.85em; color: #777; line-height: 1.6;">基于 CF Workers + D1 SQL 数据库 + R2 对象存储 搭建，从此拥有了以自己名字命名的邮箱。</p>
+      <div style="margin-top: 15px; font-size: 0.8em; font-weight: bold; color: #4caf50;"># 工具 # Serverless</div>
+    </div>
+  </a>
+
+</div>
+
+<style>
+  .item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #ff9800 !important;
+  }
+  .item-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff9800, #4caf50);
+  }
+</style>
     </div>
     
     

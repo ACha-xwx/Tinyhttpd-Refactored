@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Hot Air Balloon</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: transparent;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    #game-container {
+      position: relative;
+      width: 320px;
+      height: 500px;
+      user-select: none;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      background: #fafafa;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(250, 250, 250, 0.85);
+      backdrop-filter: blur(4px);
+    }
+
+    h2 {
+      color: #444;
+      margin: 0 0 10px 0;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #888;
+      font-size: 13px;
+      margin: 0 0 25px 0;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    button {
+      padding: 12px 30px;
+      border: none;
+      background: #607d8b;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+      font-family: inherit;
+    }
+
+    button.restart {
+      background: #000000;
+    }
+
+    #game-over {
+      display: none;
+      background: rgba(250, 250, 250, 0.9);
+    }
+
+    #final-score {
+      font-weight: bold;
+      color: #000000;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="game-container">
+    <canvas id="balloonGame" width="320" height="500"></canvas>
+    <div id="start-screen" class="overlay">
+      <h2>Hot Air Balloon</h2>
+      <p>🖱️ 鼠标按住拖动 / 📱 手指滑动屏幕<br>🎈 收集气泡，躲避尖刺平台！</p>
+      <button id="btn-start">开始升空</button>
+    </div>
+    <div id="game-over" class="overlay">
+      <h2>Game Over</h2>
+      <p>Score: <span id="final-score">0</span></p>
+      <button id="btn-restart" class="restart">再来一局</button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('balloonGame');
+    const ctx = canvas.getContext('2d');
+    const startScreen = document.getElementById('start-screen');
+    const gameOverScreen = document.getElementById('game-over');
+    const finalScoreSpan = document.getElementById('final-score');
+
+    let balloon, bubbles, spikes, score, gameLoop, isGameOver, speed;
+
+    document.getElementById('btn-start').addEventListener('click', startGame);
+    document.getElementById('btn-restart').addEventListener('click', startGame);
+
+    function moveBalloon(clientX) {
+      if (isGameOver) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      let x = (clientX - rect.left) * scaleX;
+      balloon.x = Math.max(balloon.radius, Math.min(canvas.width - balloon.radius, x));
+    }
+
+    let isDragging = false;
+    canvas.addEventListener('mousedown', () => isDragging = true);
+    window.addEventListener('mouseup', () => isDragging = false);
+    canvas.addEventListener('mousemove', (e) => { if (isDragging) moveBalloon(e.clientX); });
+    canvas.addEventListener('touchmove', (e) => { moveBalloon(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+
+    function startGame() {
+      startScreen.style.display = 'none';
+      gameOverScreen.style.display = 'none';
+      balloon = { x: canvas.width / 2, y: 400, radius: 14 };
+      bubbles = []; spikes = []; score = 0; speed = 2.5; isGameOver = false;
+      cancelAnimationFrame(gameLoop);
+      update();
+    }
+
+    function drawBalloon() {
+      ctx.beginPath(); ctx.arc(balloon.x, balloon.y, balloon.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#78909c'; ctx.fill(); ctx.closePath();
+      ctx.fillStyle = '#546e7a'; ctx.fillRect(balloon.x - 5, balloon.y + 16, 10, 8);
+      ctx.beginPath(); ctx.moveTo(balloon.x - 8, balloon.y + 10); ctx.lineTo(balloon.x - 5, balloon.y + 16);
+      ctx.moveTo(balloon.x + 8, balloon.y + 10); ctx.lineTo(balloon.x + 5, balloon.y + 16);
+      ctx.strokeStyle = '#546e7a'; ctx.lineWidth = 1.5; ctx.stroke();
+    }
+
+    function drawBubble(b) {
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = '#90a4ae'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.radius - 3, Math.PI * 1.1, Math.PI * 1.6); ctx.stroke();
+    }
+
+    function drawSpikePlatform(s) {
+      ctx.fillStyle = '#9e9e9e'; ctx.fillRect(s.x, s.y, s.width, 4);
+      ctx.beginPath();
+      for (let i = 0; i < s.width; i += 8) {
+        ctx.moveTo(s.x + i, s.y + 4); ctx.lineTo(s.x + i + 4, s.y + 12); ctx.lineTo(s.x + i + 8, s.y + 4);
+      }
+      ctx.fill();
+    }
+
+    function update() {
+      if (isGameOver) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#666';
+      ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(score, 15, 25);
+      drawBalloon();
+
+      if (Math.random() < 0.035) bubbles.push({ x: Math.random() * (canvas.width - 20) + 10, y: -20, radius: 7 });
+      if (Math.random() < 0.015) spikes.push({ x: Math.random() * (canvas.width - 60), y: -20, width: 60 + Math.random() * 80 });
+
+      for (let i = bubbles.length - 1; i >= 0; i--) {
+        let b = bubbles[i]; b.y += speed; drawBubble(b);
+        if (Math.hypot(balloon.x - b.x, balloon.y - b.y) < balloon.radius + b.radius) { score += 10; bubbles.splice(i, 1); if (score % 100 === 0) speed += 0.3; }
+        else if (b.y > canvas.height + 20) bubbles.splice(i, 1);
+      }
+
+      for (let i = spikes.length - 1; i >= 0; i--) {
+        let s = spikes[i]; s.y += speed; drawSpikePlatform(s);
+        if (balloon.x + balloon.radius - 2 > s.x && balloon.x - balloon.radius + 2 < s.x + s.width && balloon.y + balloon.radius > s.y && balloon.y - balloon.radius < s.y + 12) isGameOver = true;
+        if (s.y > canvas.height + 20) spikes.splice(i, 1);
+      }
+
+      if (isGameOver) { finalScoreSpan.innerText = score; gameOverScreen.style.display = 'flex'; }
+      else { gameLoop = requestAnimationFrame(update); }
+    }
+  </script>
+</body>
+
+</html>

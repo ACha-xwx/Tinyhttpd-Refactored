@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>收拾，整理，以及翻新...</title>
+    <url>/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/</url>
+    <content><![CDATA[
+
+
+
+是一些碎碎念啊……
+
+
+
+好久没有进行这个网站的维护工作了，甚至，可以说，连最基本的发送博客文章也没有……仿佛这个博客网站只是在高三紧张学习节点的寒假期间找到的一个缓解压力方式罢了。进入大学，学习，游戏，亦或是杂七杂八的事情，仿佛也跟本没有为这个小小的网站留一片栖存之地。若不是寒假作业（Tinyhttpd-Refactored）的存在，或许阿猹的小窝还会在我电脑一隅尘封良久……
+不管怎么样，我终究还是想起你了，不是吗😎
+收拾起了以前没有做完的旧摊子，把 About，Categories 和 Tags 这三个板块全部做完了（其实就是在终端创建一个文章的事儿，之前却一直没有弄……）
+随后加入了 Archives 页面内的站内帖子搜索功能，加入了博客文章的评论功能。
+一开始使用 Giscus ，但是后来发现 Giscus 必须登录 Github 才可以发送评论……于是换成了 Twikoo (https://github.com/twikoojs/twikoo)。
+Twikoo 使用了免费的MongoDB数据库，然后在 Vercel 上云端部署了 Twikoo，并将 Twikoo 连接到了我的 Hexo 主题里。
+在部署好了 Twikoo 后，开通了即时消息推送（使用 Qmsg酱）以及邮件通知提醒。并且给 Twikoo 加了 Cloudflare Turnstile 验证码（别说，Cloudflare 还真不愧是我们的赛博菩萨😂）
+随后加入了鼠标轨迹显示、FPS显示、网页名称变化以及 APlayer 播放器，里面塞了我的一个网易云歌单。简单做了一个毛玻璃效果，加入了一个旋钮开关并同时做了手机端适配。后来优化了一下网页性能。用 Vercel 给网页做了分流，加快了国内访问本网站的速度。
+加入了网页访问量统计。
+然后加入了Groceries Box页面，里面存放我弄的乱七八糟的小东西们。首先是 Dino Run（https://wayou.github.io/t-rex-runner/），Chrome的小彩蛋，一个基于 HTML，十分经典的恐龙快跑小游戏。
+然后加入了 Qexo ——管理 Hexo 的开源在线后台 （https://github.com/Qexo/Qexo），同样使用 MongoDB 数据库，Vercel 部署。同时给网页菜单栏加入了 Write! 板块，直接通向这个后台。
+在上数据结构课程的时候看到 HelloGithub 公众号发布的文章（真的是很棒的一个公众号！）里提到一个 JS 项目 cloud-mail（https://github.com/maillab/cloud-mail），于是萌生出制作一个以自己域名结尾的专属邮箱的想法。这个邮箱系统基于 Cloudflare Workers。利用 Cloudflare Email Routing 接收邮件，转交给 Cloudflare Workers 处理，最后把邮件正文存在 Cloudflare D1 这个边缘 SQL 数据库里。
+
+以后还会加一些什么功能呢？就看我能在Github上找到什么好东西吧！
+至少，按时更新帖子才是重要的😜
+那么，就先到这里吧。一起加油！
+]]></content>
+  </entry>
+  <entry>
+    <title>新年快乐！！</title>
+    <url>/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/</url>
+    <content><![CDATA[新年快乐！！！
+
+马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！
+春节可能会有新歌噢！
+阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！
+新年快乐鸭！~
+]]></content>
+  </entry>
+  <entry>
+    <title>阿猹的自我介绍&amp;第一篇个人博客！</title>
+    <url>/2024/12/29/%E9%98%BF%E7%8C%B9%E7%9A%84%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D-%E7%AC%AC%E4%B8%80%E7%AF%87%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%81/</url>
+    <content><![CDATA[
+
+嗨嗨害，这里是阿猹，一个屑音乐人！欢迎来到我的个人简介！~🥰
+
+
+
+个人简介
+
+出道于2020年3月15日 你也别问我为啥记得这么清楚（doge），原先是兴趣使然做Undertale（传说之下）的Remix以及一些同人曲，从而接触到了FL Studio和其他的音乐制作软件。
+现在呢则是努力扩大自己的写作风格范围中，以Original works为主，有时也会重拾老本行，做些remix啊啥的，可是不管怎样，很多很多的电音风格阿猹都想尝试，也在努力学习中！！
+目前写过的风格嘛，BPM从小到大来说，有以下几首自认为写的还行（bushi）的曲风：
+Melodic Bass
+
+
+
+三角符文！BPM为110（没记错的话）。
+Progressive House
+
+
+
+这首是和熙熙（GZXX）在2022年7月28日发行于零幻之声厂牌的《Daybreak》，BPM为128，曲风Progressive House &amp; Melodic House。
+Tropical House
+
+
+
+2021年的新年曲！很好听！！！！BPM为128。
+Future Bounce
+
+
+
+这首是在努力学习后写的Undertale雪镇BGM的Remix！BPM为128.
+Uplifting Trance
+
+（暂不收录，因为歌曲正在等待审核中）
+和熙熙在2024年7月开的坑，这首很努力在写，结果也很满意！
+2024年12月26日投交给国外Uplifting Trance大厂Abora Recordings审核。
+Euphoric Harstyle
+
+Euphoric我也算是牢玩家了，不过几首写的都不尽人意，或许以后会继续学习。
+
+
+原来还懵懵懂懂想写音游曲来着，所以这首结尾劲爆拍砖（？），不过Psy Vocal的使用还是很好的🥴。BPM为160。
+
+
+和天问（HeavenAsks a.k.a Askisoca）的合作，这首自认为Lead很有味（嘿嘿）。BPM为160。
+个人认为上面两首的Kick和Lead结合一下就是一首好歌了。 人话：阿猹的实力没办法同时展现（bushi）
+不过反而时间靠前一些的一首，个人倒还更满意一些。
+
+
+Liquid Drum 'n Bass
+
+
+
+中文名：渊溟潜鲸（不少人都叫它深海游鲸我真是服了QAQ）BPM为174。
+Midtempo, Botanica, Drum ‘n Bass, UK Hardcore
+
+是新歌！于RESOLVERS解析者厂牌发行于2026年2月17日，是一首长达7分钟，拥有4个风格的新年贺岁曲！BPM为100，180和200！
+
+那么也就这么多啦，欢迎来找阿猹一起玩！希望阿猹能和你一起进步！！！😉
+]]></content>
+      <categories>
+        <category>自我介绍</category>
+      </categories>
+      <tags>
+        <tag>自我介绍</tag>
+      </tags>
+  </entry>
+</search>

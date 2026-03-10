@@ -114,7 +114,7 @@ static inline size_t sdsavail(const sds s) {
             return sh->alloc - sh->len;
         }
         case SDS_TYPE_64: {
-            SDS_HDR(64,s);
+            SDS_HDR_VAR(64,s);
             return sh->alloc - sh->len;
         }
     }

@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      新年快乐！！ | 阿猹的小窝
+      Dino Run 🦖 | 阿猹的小窝
     </title>
     <meta name="author" content="ACha_" />
     <meta name="description" content="" />
@@ -192,27 +192,48 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
           <div class="article">
     <div>
-        <h1>新年快乐！！</h1>
+        <h1>Dino Run 🦖</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/12/31
+            2026/3/8
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1>新年快乐！！！</h1>
+        <div id="dino-container" style="width: 100%; max-width: 600px; margin: 0 auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; touch-action: pan-y;">
+    <iframe src="https://wayou.github.io/t-rex-runner/" frameborder="0" scrolling="no" width="100%" height="200px" style="display: block;"></iframe>
+</div>
 
-<p>马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！</p>
-<p>春节可能会有新歌噢！</p>
-<p>阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！</p>
-<p>新年快乐鸭！~</p>
+<p class="desktop-tips" style="text-align: center; margin-top: 20px; color: #666;">
+  按 <b>空格</b> 跳跃，按 <b>↓</b> 躲避
+</p>
 
+<p class="mobile-tips" style="text-align: center; margin-top: 20px; color: #ff9800; font-weight: bold; letter-spacing: 1px;">
+  👆 触控屏幕：点击游戏画面即可跳跃！
+</p>
+
+<style>
+  .mobile-tips {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    .desktop-tips {
+      display: none !important;
+    }
+    .mobile-tips {
+      display: block !important;
+    }
+    #dino-container iframe {
+      height: 250px !important;
+    }
+  }
+</style>
     </div>
     
     
