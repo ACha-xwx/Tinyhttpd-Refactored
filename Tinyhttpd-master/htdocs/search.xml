@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>新年快乐！！</title>
+    <url>/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/</url>
+    <content><![CDATA[新年快乐！！！
+
+马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！
+春节可能会有新歌噢！
+阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！
+新年快乐鸭！~
+]]></content>
+  </entry>
+  <entry>
     <title>收拾，整理，以及翻新...</title>
     <url>/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/</url>
     <content><![CDATA[
@@ -15,7 +26,7 @@
 不管怎么样，我终究还是想起你了，不是吗😎
 收拾起了以前没有做完的旧摊子，把 About，Categories 和 Tags 这三个板块全部做完了（其实就是在终端创建一个文章的事儿，之前却一直没有弄……）
 随后加入了 Archives 页面内的站内帖子搜索功能，加入了博客文章的评论功能。
-一开始使用 Giscus ，但是后来发现 Giscus 必须登录 Github 才可以发送评论……于是换成了 Twikoo (https://github.com/twikoojs/twikoo)。
+一开始使用 Giscus ，但是后来发现 Giscus 必须登录 Github 才可以发送评论……于是换成了 Twikoo （https://github.com/twikoojs/twikoo）。
 Twikoo 使用了免费的MongoDB数据库，然后在 Vercel 上云端部署了 Twikoo，并将 Twikoo 连接到了我的 Hexo 主题里。
 在部署好了 Twikoo 后，开通了即时消息推送（使用 Qmsg酱）以及邮件通知提醒。并且给 Twikoo 加了 Cloudflare Turnstile 验证码（别说，Cloudflare 还真不愧是我们的赛博菩萨😂）
 随后加入了鼠标轨迹显示、FPS显示、网页名称变化以及 APlayer 播放器，里面塞了我的一个网易云歌单。简单做了一个毛玻璃效果，加入了一个旋钮开关并同时做了手机端适配。后来优化了一下网页性能。用 Vercel 给网页做了分流，加快了国内访问本网站的速度。
@@ -28,17 +39,13 @@ Twikoo 使用了免费的MongoDB数据库，然后在 Vercel 上云端部署了 
 至少，按时更新帖子才是重要的😜
 那么，就先到这里吧。一起加油！
 ]]></content>
-  </entry>
-  <entry>
-    <title>新年快乐！！</title>
-    <url>/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/</url>
-    <content><![CDATA[新年快乐！！！
-
-马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！
-春节可能会有新歌噢！
-阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！
-新年快乐鸭！~
-]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>更新说明</tag>
+      </tags>
   </entry>
   <entry>
     <title>阿猹的自我介绍&amp;第一篇个人博客！</title>
@@ -108,6 +115,36 @@ Midtempo, Botanica, Drum ‘n Bass, UK Hardcore
       </categories>
       <tags>
         <tag>自我介绍</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>更新说明</title>
+    <url>/2026/03/11/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%202026.3.11/</url>
+    <content><![CDATA[2026.3.11 更新说明
+
+
+
+
+
+
+添加了 Groceries Box 里的 ASCII Art Converter 板块 (就是一个图片转 ASCII 字符画的小工具)。
+排版了 Groceries Box 的卡片样式。
+添加了 Groceries Box 里的 Emoji Combiner 板块，使用 Cloudflare Workers AI，调用模型 llama-4-scout-17b-16e-instruct ，通过 Cloudflare Workers 完成前后端对接。
+添加了 ASCII Art Converter 的 “切换显示底色” 功能，添加了一键复制生成结果的功能。
+添加了 Emoji Combiner 的表情选择数量，修改了表情显示的排列方式。
+修改了 ASCII Art Converter 的输出结果显示逻辑，修复了由于图片过大而导致无法完整显示输出结果的 Bug。
+由于 Cloudflare Workers AI在国内无法访问，Emoji Combiner 的输出结果无法显示，将 Emoji Combiner 本体移植到 Vercel 进行云端部署，借用 Vercel 的加速节点来实现访问 Cloudflare Workers AI。
+添加了 Groceries Box 卡片的边框特效样式。
+添加了 ASCII Art Converter 和 Emoji Combiner 的手机端适配。
+添加了 Groceries Box 里的 PDF Craft （https://github.com/PDFCraftTool/pdfcraft）这个开源 PDF 在线编辑器，将其部署到 Vercel 进行快速访问。
+修改了文章《收拾，整理，以及翻新…》里引用 GitHub 项目链接错误的问题。
+修改了一些文章和杂货箱卡片的 Tag。
+]]></content>
+      <categories>
+        <category>更新说明</category>
+      </categories>
+      <tags>
+        <tag>更新说明</tag>
       </tags>
   </entry>
 </search>

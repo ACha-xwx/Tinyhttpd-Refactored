@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      Hot Air Balloon | 阿猹的小窝
+      Tags: 随笔 | 阿猹的小窝
     </title>
     <meta name="author" content="ACha_" />
     <meta name="description" content="欢迎来到阿猹的小窝！这里记录了我的音乐创作、编程学习和生活点滴。希望你能喜欢这里的内容，并且在这里找到有用的信息和灵感！如果你有任何问题或者建议，欢迎随时联系我！😉" />
@@ -44,12 +44,6 @@
 <script src="/js/lib/preview.js"></script>
 
 
-
-
-
-
-
-<script src="https://unpkg.com/twikoo@1.7.1/dist/twikoo.all.min.js"></script>
 
 
 
@@ -204,36 +198,92 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-          <div class="article">
-    <div>
-        <h1>Hot Air Balloon</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2026/3/10
+          <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/tags/%E9%9A%8F%E7%AC%94/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                随笔
+            </a>
+        </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                更新说明
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                自我介绍
+            </a>
         </span>
         
         
     </div>
     
-    <div class="content" v-pre>
-        <div style="text-align: center; margin-top: 20px;">
-  <iframe src="/balloon/game.html" width="340" height="520" frameborder="0" scrolling="no" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-</div>
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2026/3/8</div>
+            <a href="/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/">
+                <h3>收拾，整理，以及翻新...</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        随笔
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E9%9A%8F%E7%AC%94/" style="color: #03a9f4">
+                            随笔
+                        </a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="color: #ff7d73">
+                            更新说明
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    
-    
-    
-    
-    
-    
-    <div id="comment">
-        <div id="twikoo-container"></div>
-    </div>
-    
     
 </div>
 
@@ -273,22 +323,6 @@
     </div>
     <script src="/js/main.js"></script>
     
-      
-
-
-
-<script>
-    twikoo.init({
-        el: "#twikoo-container",
-        envId: "https://comment.acha.xx.kg",
-        region: "",
-        path: location.pathname,
-        lang: "zh-CN",
-    })
-</script>
-
-
-        
           <div id="dashboard-toggle" onclick="toggleDashboard()">
             <span id="toggle-icon" style="transition: transform 0.3s ease; display: inline-block;">🎵</span>
           </div>

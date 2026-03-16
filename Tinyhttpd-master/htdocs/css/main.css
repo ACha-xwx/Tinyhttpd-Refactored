@@ -634,6 +634,113 @@ body::-webkit-scrollbar-track {
     position: absolute;
     width: 7px;
 }
+.flink-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+.flink-list-card {
+    position: relative;
+    display: block;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+}
+.flink-list-card img {
+    margin: 0 !important;
+    max-width: none !important;
+    display: block !important;
+}
+.flink-list-card .wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 60%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+.flink-list-card .wrapper img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+.flink-list-card .info {
+    position: absolute;
+    top: 60%; left: 0;
+    width: 100%; height: 40%;
+    background: #fff;
+    z-index: 2;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.flink-list-card .info img {
+    width: 56px !important; height: 56px !important;
+    border-radius: 50% !important;
+    margin-top: -28px !important;
+    border: 3px solid #fff !important;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: inline-block !important;
+}
+.flink-list-card .flink-sitename {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+.flink-list-card::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    transform: translateY(-50%) scale(0.9);
+    padding: 0 20px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 3;
+    opacity: 0; 
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.flink-list-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.flink-list-card:hover .wrapper {
+    height: 100%;
+}
+.flink-list-card:hover .wrapper img {
+    transform: scale(1.05);
+}
+.flink-list-card:hover .info {
+    top: 0; height: 100%;
+    background: rgba(0,0,0,0.55); 
+}
+.flink-list-card:hover .info img {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0;
+}
+.flink-list-card:hover .flink-sitename {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.flink-list-card:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
 ::-webkit-scrollbar {
     height: 12px;
     width: 12px;
@@ -901,12 +1008,6 @@ ol li {
     #home-posts-wrap {
         max-width: 1200px;
     }
-    #menu #desktop-menu {
-        display: block;
-    }
-    #menu #mobile-menu {
-        display: none;
-    }
     .article,
     #archives,
     #footer #footer-wrap {
@@ -987,12 +1088,8 @@ ol li {
     #footer #footer-wrap {
         width: 100%;
     }
-    #menu #desktop-menu,
     #home-card {
         display: none;
-    }
-    #menu #mobile-menu {
-        display: block;
     }
     ul,
     ol {
@@ -1000,7 +1097,9 @@ ol li {
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
+    #menu #desktop-menu { display: block; }
+    #menu #mobile-menu { display: none; }
     #menu #desktop-menu a[href="https://write.acha.xx.kg"] {
         float: right; 
         margin-right: 60px; 
@@ -1012,8 +1111,6 @@ ol li {
         backdrop-filter: blur(4px);                
         font-weight: bold !important; 
         transition: all 0.3s ease; 
-        
-        /* 变为黑透质感 */
         color: #000000 !important;                 
         background: rgba(0, 0, 0, 0.08);     
         border: 1px solid rgba(0, 0, 0, 0.15);
@@ -1036,7 +1133,9 @@ ol li {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+    #menu #desktop-menu { display: none; }
+    #menu #mobile-menu { display: block; }
     #menu #mobile-menu a[href="https://write.acha.xx.kg"] {
         font-weight: 900 !important;
         color: #000000 !important;

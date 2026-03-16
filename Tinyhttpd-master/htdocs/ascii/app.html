@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII Converter</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #2c3e50;
+      --panel-bg: #f8f9fa;
+      --border: #e9ecef;
+      --ascii-bg: #f1f3f5;
+      --ascii-text: #495057;
+      --btn-color: #4caf50;
+      --btn-hover: #43a047;
+      --btn-copy: #2196f3;
+      --btn-copy-hover: #1e88e5;
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --text: #00ff00;
+      --panel-bg: #1e1e1e;
+      --border: #333333;
+      --ascii-bg: #000000;
+      --ascii-text: #00ff00;
+      --btn-color: #333333;
+      --btn-hover: #555555;
+      --btn-copy: #1e1e1e;
+      --btn-copy-hover: #333333;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .app-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      min-height: 0;
+    }
+
+    .left-panel {
+      flex: 0 0 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .right-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+    }
+
+    h2 {
+      margin: 0 0 5px 0;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0;
+      opacity: 0.7;
+    }
+
+    .control-panel {
+      background: var(--panel-bg);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      flex: 1;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      background: var(--btn-color);
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: var(--btn-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-copy {
+      background: var(--btn-copy);
+      border-color: transparent;
+    }
+
+    .btn-copy:hover {
+      background: var(--btn-copy-hover);
+    }
+
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: auto;
+    }
+
+    .slider-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #4caf50;
+      cursor: pointer;
+    }
+
+    #ascii-output {
+      background: var(--ascii-bg);
+      color: var(--ascii-text);
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10px;
+      line-height: 10px;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      white-space: pre;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      text-align: left;
+      display: block;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(136, 136, 136, 0.4);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(136, 136, 136, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+
+      .app-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .left-panel {
+        flex: none;
+        width: 100%;
+        gap: 10px;
+        overflow-y: visible;
+        padding-right: 0;
+      }
+
+      .control-panel {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 15px;
+      }
+
+      .btn-group {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      .slider-container {
+        width: 100%;
+        margin-top: 0;
+      }
+
+      #ascii-output {
+        font-size: 8px;
+        line-height: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="left-panel">
+      <div>
+        <h2>ASCII_ART</h2>
+        <p>精密的字符转化引擎</p>
+      </div>
+      <div class="control-panel">
+        <div class="btn-group">
+          <label class="btn">
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            📷 上传图片
+          </label>
+          <div class="btn" id="themeToggle" style="background: var(--bg); color: var(--text);">
+            🌗 切换底色
+          </div>
+          <div class="btn btn-copy" id="copyBtn">
+            📋 复制结果
+          </div>
+        </div>
+        <div class="slider-container">
+          <div class="slider-row">
+            <span>精细度:</span>
+            <span id="resValue">80</span>
+          </div>
+          <input type="range" id="resolutionSlider" min="20" max="150" value="80">
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <canvas id="hiddenCanvas" style="display: none;"></canvas>
+      <div id="ascii-output">
+        <div
+          style="height: 100%; display: flex; justify-content: center; align-items: center; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+          等待上传图片...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const resolutionSlider = document.getElementById('resolutionSlider');
+    const resValue = document.getElementById('resValue');
+    const asciiOutput = document.getElementById('ascii-output');
+    const canvas = document.getElementById('hiddenCanvas');
+    const ctx = canvas.getContext('2d');
+    const themeToggle = document.getElementById('themeToggle');
+    const copyBtn = document.getElementById('copyBtn');
+
+    let currentImage = null;
+    let isDarkMode = false;
+
+    const densityLight = "Ñ@#W$9876543210?!abc;:+=-,._          ";
+    const densityDark = "          _.,-=+:;cba!?0123456789$W#@Ñ";
+
+    themeToggle.addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      if (currentImage) generateASCII();
+    });
+
+    copyBtn.addEventListener('click', () => {
+      const textToCopy = asciiOutput.innerText;
+      if (!textToCopy || textToCopy.includes('等待上传图片...')) {
+        alert('请先上传图片！');
+        return;
+      }
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = copyBtn.innerText;
+        copyBtn.innerText = '✅ 复制成功';
+        setTimeout(() => copyBtn.innerText = originalText, 2000);
+      });
+    });
+
+    imageInput.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          currentImage = img;
+          generateASCII();
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    });
+
+    resolutionSlider.addEventListener('input', function () {
+      resValue.innerText = this.value;
+      if (currentImage) generateASCII();
+    });
+
+    function generateASCII() {
+      if (!currentImage) return;
+      const width = parseInt(resolutionSlider.value);
+      const ratio = currentImage.height / currentImage.width;
+      const height = Math.floor(width * ratio * 0.55);
+
+      canvas.width = width;
+      canvas.height = height;
+
+      ctx.drawImage(currentImage, 0, 0, width, height);
+      const imageData = ctx.getImageData(0, 0, width, height);
+      const pixels = imageData.data;
+
+      const density = isDarkMode ? densityDark : densityLight;
+      const len = density.length;
+      let asciiImage = "";
+
+      for (let i = 0; i < pixels.length; i += 4) {
+        const avg = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3;
+        const charIndex = Math.floor((avg / 255) * (len - 1));
+        asciiImage += density.charAt(charIndex);
+        if ((i / 4 + 1) % width === 0) asciiImage += "\n";
+      }
+      asciiOutput.innerText = asciiImage;
+    }
+  </script>
+</body>
+
+</html>

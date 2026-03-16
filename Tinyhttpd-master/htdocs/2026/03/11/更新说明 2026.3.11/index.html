@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <title>
-      Hot Air Balloon | 阿猹的小窝
+      更新说明 | 阿猹的小窝
     </title>
     <meta name="author" content="ACha_" />
     <meta name="description" content="欢迎来到阿猹的小窝！这里记录了我的音乐创作、编程学习和生活点滴。希望你能喜欢这里的内容，并且在这里找到有用的信息和灵感！如果你有任何问题或者建议，欢迎随时联系我！😉" />
@@ -206,23 +206,64 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
           <div class="article">
     <div>
-        <h1>Hot Air Balloon</h1>
+        <h1>更新说明</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2026/3/10
+            2026/3/11
         </span>
         
+        <span class="category">
+            <a href="/categories/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                更新说明
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="color: #00a596">
+                    更新说明
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <div style="text-align: center; margin-top: 20px;">
-  <iframe src="/balloon/game.html" width="340" height="520" frameborder="0" scrolling="no" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></iframe>
-</div>
+        <h2>2026.3.11 更新说明</h2>
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=530 height=86 src="//music.163.com/outchain/player?type=2&id=3349411299&auto=0&height=66"></iframe>
+
+<span id="more"></span>
+
+<hr>
+<p>添加了 Groceries Box 里的 ASCII Art Converter 板块 <small>(就是一个图片转 ASCII 字符画的小工具)</small>。</p>
+<p>排版了 Groceries Box 的卡片样式。</p>
+<p>添加了 Groceries Box 里的 Emoji Combiner 板块，使用 Cloudflare Workers AI，调用模型 llama-4-scout-17b-16e-instruct ，通过 Cloudflare Workers 完成前后端对接。</p>
+<p>添加了 ASCII Art Converter 的 “切换显示底色” 功能，添加了一键复制生成结果的功能。</p>
+<p>添加了 Emoji Combiner 的表情选择数量，修改了表情显示的排列方式。</p>
+<p>修改了 ASCII Art Converter 的输出结果显示逻辑，修复了由于图片过大而导致无法完整显示输出结果的 Bug。</p>
+<p>由于 Cloudflare Workers AI在国内无法访问，Emoji Combiner 的输出结果无法显示，将 Emoji Combiner 本体移植到 Vercel 进行云端部署，借用 Vercel 的加速节点来实现访问 Cloudflare Workers AI。</p>
+<p>添加了 Groceries Box 卡片的边框特效样式。</p>
+<p>添加了 ASCII Art Converter 和 Emoji Combiner 的手机端适配。</p>
+<p>添加了 Groceries Box 里的 PDF Craft <small>（<a target="_blank" rel="noopener" href="https://github.com/PDFCraftTool/pdfcraft">https://github.com/PDFCraftTool/pdfcraft</a>）</small>这个开源 PDF 在线编辑器，将其部署到 Vercel 进行快速访问。</p>
+<p>修改了文章《收拾，整理，以及翻新…》里引用 GitHub 项目链接错误的问题。</p>
+<p>修改了一些文章和杂货箱卡片的 Tag。</p>
+
     </div>
     
     

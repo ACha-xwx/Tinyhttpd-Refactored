@@ -9,8 +9,8 @@
       收拾，整理，以及翻新... | 阿猹的小窝
     </title>
     <meta name="author" content="ACha_" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="欢迎来到阿猹的小窝！这里记录了我的音乐创作、编程学习和生活点滴。希望你能喜欢这里的内容，并且在这里找到有用的信息和灵感！如果你有任何问题或者建议，欢迎随时联系我！😉" />
+    <meta name="keywords" content="阿猹的小窝, 个人主页, 音乐人, 程序员, 博客" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -104,6 +104,11 @@
             <span>&ensp;Groceries Box</span>
         </a>
         
+        <a href="/friends">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Friend Links</span>
+        </a>
+        
         <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
             <i class="fa-solid fa-feather-pointed fa-fw"></i>
             <span>&ensp;Write!</span>
@@ -172,6 +177,15 @@
                     </div>
                 </a>
                 
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-link fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friend Links</div>
+                    </div>
+                </a>
+                
                 <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
@@ -202,6 +216,37 @@
             2026/3/8
         </span>
         
+        <span class="category">
+            <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                随笔
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E9%9A%8F%E7%AC%94/" style="color: #ffa2c4">
+                    随笔
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E/" style="color: #03a9f4">
+                    更新说明
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
@@ -218,14 +263,14 @@
 <p>不管怎么样，我终究还是想起你了，不是吗😎</p>
 <p>收拾起了以前没有做完的旧摊子，把 About，Categories 和 Tags 这三个板块全部做完了<small>（其实就是在终端创建一个文章的事儿，之前却一直没有弄……）</small></p>
 <p>随后加入了 Archives 页面内的站内帖子搜索功能，加入了博客文章的评论功能。</p>
-<p>一开始使用 Giscus ，但是后来发现 Giscus 必须登录 Github 才可以发送评论……于是换成了 Twikoo <small>(<a target="_blank" rel="noopener" href="https://github.com/twikoojs/twikoo">https://github.com/twikoojs/twikoo</a>)</small>。</p>
+<p>一开始使用 Giscus ，但是后来发现 Giscus 必须登录 Github 才可以发送评论……于是换成了 Twikoo <small>（<a target="_blank" rel="noopener" href="https://github.com/twikoojs/twikoo">https://github.com/twikoojs/twikoo</a>）</small>。</p>
 <p>Twikoo 使用了免费的MongoDB数据库，然后在 Vercel 上云端部署了 Twikoo，并将 Twikoo 连接到了我的 Hexo 主题里。</p>
 <p>在部署好了 Twikoo 后，开通了即时消息推送<small>（使用 Qmsg酱）</small>以及邮件通知提醒。并且给 Twikoo 加了 Cloudflare Turnstile 验证码（别说，Cloudflare 还真不愧是我们的赛博菩萨😂）</p>
 <p>随后加入了鼠标轨迹显示、FPS显示、网页名称变化以及 APlayer 播放器，里面塞了我的一个网易云歌单。简单做了一个毛玻璃效果，加入了一个旋钮开关并同时做了手机端适配。后来优化了一下网页性能。用 Vercel 给网页做了分流，加快了国内访问本网站的速度。</p>
 <p>加入了网页访问量统计。</p>
-<p>然后加入了Groceries Box页面，里面存放我弄的乱七八糟的小东西们。首先是 Dino Run<small>（<a target="_blank" rel="noopener" href="https://wayou.github.io/t-rex-runner/%EF%BC%89">https://wayou.github.io/t-rex-runner/）</a></small>，Chrome的小彩蛋，一个基于 HTML，十分经典的恐龙快跑小游戏。</p>
-<p>然后加入了 Qexo ——管理 Hexo 的开源在线后台 <small>（<a target="_blank" rel="noopener" href="https://github.com/Qexo/Qexo%EF%BC%89">https://github.com/Qexo/Qexo）</a></small>，同样使用 MongoDB 数据库，Vercel 部署。同时给网页菜单栏加入了 Write! 板块，直接通向这个后台。</p>
-<p>在上数据结构课程的时候看到 HelloGithub 公众号发布的文章<small>（<strong>真的是很棒的一个公众号！</strong>）</small>里提到一个 JS 项目 cloud-mail<small>（<a target="_blank" rel="noopener" href="https://github.com/maillab/cloud-mail%EF%BC%89">https://github.com/maillab/cloud-mail）</a></small>，于是萌生出制作一个以自己域名结尾的专属邮箱的想法。这个邮箱系统基于 Cloudflare Workers。利用 Cloudflare Email Routing 接收邮件，转交给 Cloudflare Workers 处理，最后把邮件正文存在 Cloudflare D1 这个边缘 SQL 数据库里。</p>
+<p>然后加入了Groceries Box页面，里面存放我弄的乱七八糟的小东西们。首先是 Dino Run<small>（<a target="_blank" rel="noopener" href="https://wayou.github.io/t-rex-runner/">https://wayou.github.io/t-rex-runner/</a>）</small>，Chrome的小彩蛋，一个基于 HTML，十分经典的恐龙快跑小游戏。</p>
+<p>然后加入了 Qexo ——管理 Hexo 的开源在线后台 <small>（<a target="_blank" rel="noopener" href="https://github.com/Qexo/Qexo">https://github.com/Qexo/Qexo</a>）</small>，同样使用 MongoDB 数据库，Vercel 部署。同时给网页菜单栏加入了 Write! 板块，直接通向这个后台。</p>
+<p>在上数据结构课程的时候看到 HelloGithub 公众号发布的文章<small>（<strong>真的是很棒的一个公众号！</strong>）</small>里提到一个 JS 项目 cloud-mail<small>（<a target="_blank" rel="noopener" href="https://github.com/maillab/cloud-mail">https://github.com/maillab/cloud-mail</a>）</small>，于是萌生出制作一个以自己域名结尾的专属邮箱的想法。这个邮箱系统基于 Cloudflare Workers。利用 Cloudflare Email Routing 接收邮件，转交给 Cloudflare Workers 处理，最后把邮件正文存在 Cloudflare D1 这个边缘 SQL 数据库里。</p>
 <p><img src="https://free.picui.cn/free/2026/03/10/69b0211526579.png" alt="image-20260310213811180"></p>
 <p>以后还会加一些什么功能呢？就看我能在Github上找到什么好东西吧！</p>
 <p>至少，按时更新帖子才是重要的😜</p>
