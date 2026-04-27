@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>
+       | 阿猹的小窝
+    </title>
+    <meta name="author" content="ACha_" />
+    <meta name="description" content="欢迎来到阿猹的小窝！这里记录了我的音乐创作、编程学习和生活点滴。希望你能喜欢这里的内容，并且在这里找到有用的信息和灵感！如果你有任何问题或者建议，欢迎随时联系我！😉" />
+    <meta name="keywords" content="阿猹的小窝, 个人主页, 音乐人, 程序员, 博客" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://unpkg.com/twikoo@1.7.1/dist/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+  <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="阿猹的小窝" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="阿猹的小窝" type="application/rss+xml">
+</head>
+
+  <body>
+    <div id="layout">
+      <transition name="fade">
+        <div id="loading" v-show="loading">
+          <div id="loading-circle">
+            <h2>LOADING</h2>
+            <p>加载中...</p>
+            <img src="/images/cat.gif" />
+          </div>
+        </div>
+      </transition>
+      <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>阿猹的小窝</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/groceries">
+            <i class="fa-solid fa-box-open fa-fw"></i>
+            <span>&ensp;Groceries Box</span>
+        </a>
+        
+        <a href="/friends">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Friend Links</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
+            <i class="fa-solid fa-feather-pointed fa-fw"></i>
+            <span>&ensp;Write!</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;阿猹的小窝</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/groceries">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-open fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Groceries Box</div>
+                    </div>
+                </a>
+                
+                <a href="/friends">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-link fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Friend Links</div>
+                    </div>
+                </a>
+                
+                <a target="_blank" rel="noopener" href="https://write.acha.xx.kg">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-feather-pointed fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Write!</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+          <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/4/1
+        </span>
+        
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bleach vs Naruto - 网页版</title>
+  <style>
+    /* 街机暗黑风格背景，保证游戏画面居中 */
+    body {
+      margin: 0;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 定义游戏画面的默认比例大小 */
+    #player-container {
+      width: 800px;
+      height: 600px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="player-container"></div>
+
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", (event) => {
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+      const container = document.getElementById("player-container");
+
+      // 将模拟器挂载到页面上
+      container.appendChild(player);
+
+      // 设定模拟器大小填满容器
+      player.style.width = "100%";
+      player.style.height = "100%";
+
+      // 载入同目录下的 SWF 文件
+      player.load("bvn.swf");
+    });
+  </script>
+
+</body>
+
+</html>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+          <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2024 - 2026 阿猹的小窝
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;ACha_
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+        <div>
+            备案号：
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20269876">萌ICP备20269876号</a>
+            
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+          <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+              <img id="preview-content" ref="previewContent" />
+            </div>
+          </transition>
+          
+    </div>
+    <script src="/js/main.js"></script>
+    
+      
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.acha.xx.kg",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+        
+          <div id="dashboard-toggle" onclick="toggleDashboard()">
+            <span id="toggle-icon" style="transition: transform 0.3s ease; display: inline-block;">🎵</span>
+          </div>
+          <div id="dashboard-container">
+            <div id="fps-monitor">
+              <span id="fps-dot"></span>
+              <span id="fps-text">FPS: --</span>
+            </div>
+
+            <div id="traffic-monitor">
+              <span>👁️ 总浏览数: <span id="busuanzi_value_site_pv" class="data-num">...</span></span>
+              <span>👤 总访客数: <span id="busuanzi_value_site_uv" class="data-num">...</span></span>
+            </div>
+
+            <meting-js server="netease" type="playlist" id="17820803221" fixed="false" mini="false" order="list"
+              loop="all" list-folded="true" theme="#00ff00" preload="none">
+            </meting-js>
+          </div>
+
+          <style>
+            #dashboard-container {
+              position: fixed;
+              bottom: 80px;
+              left: 20px;
+              z-index: 9999;
+              width: 360px;
+              background: rgba(255, 255, 255, 0.85);
+              backdrop-filter: blur(15px);
+              -webkit-backdrop-filter: blur(15px);
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 12px;
+              box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+              overflow: hidden;
+              font-family: inherit;
+              transform-origin: bottom left;
+              transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
+            #fps-monitor {
+              padding: 10px 15px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+              color: #333;
+              font-size: 14px;
+              font-weight: bold;
+            }
+
+            #fps-dot {
+              width: 8px;
+              height: 8px;
+              background: currentColor;
+              border-radius: 50%;
+              margin-right: 8px;
+              box-shadow: 0 0 6px currentColor;
+              animation: blink 1.5s infinite;
+            }
+
+            #traffic-monitor {
+              padding: 8px 15px;
+              display: flex;
+              justify-content: space-between;
+              font-size: 12px;
+              color: #555;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            #dashboard-toggle {
+              position: fixed;
+              bottom: 20px;
+              left: 20px;
+              z-index: 10000;
+              width: 44px;
+              height: 44px;
+              background: rgba(255, 255, 255, 0.85);
+              backdrop-filter: blur(15px);
+              -webkit-backdrop-filter: blur(15px);
+              border: 1px solid rgba(0, 0, 0, 0.1);
+              border-radius: 50%;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 20px;
+              color: #333;
+              transition: all 0.3s ease;
+            }
+
+            #dashboard-toggle:hover {
+              transform: scale(1.1);
+            }
+
+            .dashboard-hidden {
+              opacity: 0 !important;
+              transform: translateY(20px) scale(0.9) !important;
+              pointer-events: none !important;
+            }
+
+            .data-num {
+              font-weight: bold;
+              color: #0078d7;
+            }
+
+            .aplayer {
+              margin: 0 !important;
+              background: transparent !important;
+              box-shadow: none !important;
+              color: #333 !important;
+            }
+
+            .aplayer .aplayer-info {
+              border-bottom: none !important;
+              padding: 10px !important;
+            }
+
+            .aplayer .aplayer-info .aplayer-music .aplayer-title {
+              color: #111 !important;
+              font-size: 14px !important;
+              font-weight: bold;
+            }
+
+            .aplayer .aplayer-info .aplayer-music .aplayer-author {
+              color: #666 !important;
+            }
+
+            .aplayer .aplayer-list ol li {
+              border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+            }
+
+            .aplayer .aplayer-list ol li:hover {
+              background: rgba(0, 0, 0, 0.04) !important;
+            }
+
+            .aplayer .aplayer-list ol li.aplayer-list-light {
+              background: rgba(0, 0, 0, 0.08) !important;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-title {
+              color: #222 !important;
+              font-weight: bold;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-author {
+              color: #777 !important;
+            }
+
+            .aplayer .aplayer-list ol li .aplayer-list-index {
+              color: #999 !important;
+            }
+
+            .aplayer .aplayer-lrc:before,
+            .aplayer .aplayer-lrc:after {
+              display: none !important;
+            }
+
+            @keyframes blink {
+
+              0%,
+              100% {
+                opacity: 1;
+              }
+
+              50% {
+                opacity: 0.3;
+              }
+            }
+
+            @media screen and (max-width: 768px) {
+              #dashboard-container {
+                width: calc(100vw - 30px) !important;
+                left: 15px !important;
+                bottom: 75px !important;
+              }
+
+              #fps-monitor,
+              #traffic-monitor {
+                padding: 6px 12px !important;
+              }
+
+              #fps-text {
+                font-size: 13px !important;
+              }
+
+              .aplayer .aplayer-list {
+                max-height: 200px !important;
+              }
+            }
+          </style>
+
+          <script>
+              (function () {
+                let lastTime = performance.now();
+                let frame = 0;
+                const fpsText = document.getElementById('fps-text');
+                const fpsDot = document.getElementById('fps-dot');
+                function updateFPS() {
+                  const now = performance.now();
+                  frame++;
+                  if (now - lastTime >= 1000) {
+                    const currentFps = Math.round((frame * 1000) / (now - lastTime));
+                    if (fpsText) fpsText.innerText = `FPS: ${currentFps}`;
+                    if (currentFps >= 55) {
+                      if (fpsText) fpsText.style.color = '#10b981';
+                      if (fpsDot) fpsDot.style.color = '#10b981';
+                    } else if (currentFps >= 30) {
+                      if (fpsText) fpsText.style.color = '#f59e0b';
+                      if (fpsDot) fpsDot.style.color = '#f59e0b';
+                    } else {
+                      if (fpsText) fpsText.style.color = '#ef4444';
+                      if (fpsDot) fpsDot.style.color = '#ef4444';
+                    }
+                    frame = 0;
+                    lastTime = now;
+                  }
+                  requestAnimationFrame(updateFPS);
+                }
+                updateFPS();
+              })();
+            function toggleDashboard() {
+              const dashboard = document.getElementById('dashboard-container');
+              const icon = document.getElementById('toggle-icon');
+              if (dashboard.classList.contains('dashboard-hidden')) {
+                dashboard.classList.remove('dashboard-hidden');
+                icon.innerHTML = '✖';
+                icon.style.transform = 'rotate(90deg)';
+              } else {
+                dashboard.classList.add('dashboard-hidden');
+                icon.innerHTML = '🎵';
+                icon.style.transform = 'rotate(0deg)';
+              }
+            }
+            document.getElementById('dashboard-container').classList.add('dashboard-hidden');
+          </script>
+          <canvas id="fireworks"
+            style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999"></canvas>
+
+          <script>
+            var OriginTitle = document.title;
+            var titleTime;
+            document.addEventListener('visibilitychange', function () {
+              if (document.hidden) {
+                document.title = '快回来呀 ヾ(≧へ≦)〃';
+                clearTimeout(titleTime);
+              } else {
+                document.title = '欢迎光临 ヾ(≧▽≦*)o';
+                titleTime = setTimeout(function () { document.title = OriginTitle; }, 1000);
+              }
+            });
+
+            const canvas = document.getElementById('fireworks');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+            window.addEventListener('resize', resize); resize();
+            window.addEventListener('mousemove', (e) => {
+              for (let i = 0; i < 2; i++) {
+                particles.push({
+                  x: e.clientX, y: e.clientY, size: Math.random() * 3 + 1,
+                  spX: (Math.random() - 0.5) * 2, spY: (Math.random() - 0.5) * 2,
+                  color: `hsl(${Math.random() * 360}, 50%, 50%)`, alpha: 1
+                });
+              }
+            });
+            function animate() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              particles.forEach((p, i) => {
+                p.x += p.spX; p.y += p.spY; p.alpha -= 0.02;
+                if (p.alpha <= 0) return particles.splice(i, 1);
+                ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+              });
+              requestAnimationFrame(animate);
+            }
+            animate();
+          </script>
+  </body>
+  </html>

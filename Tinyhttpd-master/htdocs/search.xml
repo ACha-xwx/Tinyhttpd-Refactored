@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>新年快乐！！</title>
-    <url>/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/</url>
-    <content><![CDATA[新年快乐！！！
-
-马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！
-春节可能会有新歌噢！
-阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！
-新年快乐鸭！~
-]]></content>
-  </entry>
-  <entry>
     <title>收拾，整理，以及翻新...</title>
     <url>/2026/03/08/%E6%94%B6%E6%8B%BE%EF%BC%8C%E6%95%B4%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E7%BF%BB%E6%96%B0/</url>
     <content><![CDATA[
@@ -44,6 +33,75 @@ Twikoo 使用了免费的MongoDB数据库，然后在 Vercel 上云端部署了 
       </categories>
       <tags>
         <tag>随笔</tag>
+        <tag>更新说明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新年快乐！！</title>
+    <url>/2024/12/31/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81%EF%BC%81/</url>
+    <content><![CDATA[新年快乐！！！
+
+马上就到2025年了，是阿猹的高考年，也会是阿猹重新正式开始写歌的一年！
+春节可能会有新歌噢！
+阿猹提前祝大家，在新的一年里，每天开心，吃饱饱穿暖暖，做一个可爱的人！
+新年快乐鸭！~
+]]></content>
+  </entry>
+  <entry>
+    <title>更新说明</title>
+    <url>/2026/03/11/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%202026.3.11/</url>
+    <content><![CDATA[2026.3.11 更新说明
+
+
+
+
+
+
+添加了 Groceries Box 里的 ASCII Art Converter 板块 (就是一个图片转 ASCII 字符画的小工具)。
+排版了 Groceries Box 的卡片样式。
+添加了 Groceries Box 里的 Emoji Combiner 板块，使用 Cloudflare Workers AI，调用模型 llama-4-scout-17b-16e-instruct ，通过 Cloudflare Workers 完成前后端对接。
+添加了 ASCII Art Converter 的 “切换显示底色” 功能，添加了一键复制生成结果的功能。
+添加了 Emoji Combiner 的表情选择数量，修改了表情显示的排列方式。
+修改了 ASCII Art Converter 的输出结果显示逻辑，修复了由于图片过大而导致无法完整显示输出结果的 Bug。
+由于 Cloudflare Workers AI在国内无法访问，Emoji Combiner 的输出结果无法显示，将 Emoji Combiner 本体移植到 Vercel 进行云端部署，借用 Vercel 的加速节点来实现访问 Cloudflare Workers AI。
+添加了 Groceries Box 卡片的边框特效样式。
+添加了 ASCII Art Converter 和 Emoji Combiner 的手机端适配。
+添加了 Groceries Box 里的 PDF Craft （https://github.com/PDFCraftTool/pdfcraft）这个开源 PDF 在线编辑器，将其部署到 Vercel 进行快速访问。
+修改了文章《收拾，整理，以及翻新…》里引用 GitHub 项目链接错误的问题。
+修改了一些文章和杂货箱卡片的 Tag。
+]]></content>
+      <categories>
+        <category>更新说明</category>
+      </categories>
+      <tags>
+        <tag>更新说明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>更新说明</title>
+    <url>/2026/03/29/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%202026.3.29/</url>
+    <content><![CDATA[2026.3.29 更新说明
+
+
+
+
+
+添加了一个表情包风格的扫雷游戏（Fork 自https://github.com/muan/emoji-minesweeper）
+添加了友情链接板块，欢迎来和阿猹交换友链！~😘
+添加了基于 Microsoft Azure 云服务器搭建的，基于开源项目 Cloudreve （https://github.com/cloudreve/cloudreve）的，基于 OneDrive 存储的，基于我申请好久才申请下来的 GitHub Education 学生认证的（bushi）云盘，目前容量 5T ，以后有💴了可能会考虑用 NAS 存储（因为 OneDrive 稳定性有待商榷😟不过白嫖嘛……就轮不到我抱怨稳定性了哈哈😂）
+添加了基于开源项目 Alist （https://github.com/AlistGo/alist）和百度网盘 WebDAV 功能搭建的网盘（没错，要和云盘区别一下），由于一些原因暂不开放使用。
+休息了一段时间……学校事儿挺多的😥
+添加了基于开源项目 EmulatorJS （https://github.com/EmulatorJS/EmulatorJS）搭建的在线街机平台（游戏本体资源系网络收集）。起初打算用 Cloudreve 云盘存储游戏本体的ROM文件，但是后来发现 Cloudreve 的直链不固定，用本地 WebDAV 搞半天死活也搞不好（已经给白嫖的服务器搞崩两次了🥹），于是果断换了 Alist 网盘，使用 Vercel 给百度网盘传过来的链接解密，搞了好久才终于搞好这个东西……
+添加了一个强大的在线开发人员工具箱IT Tools （https://github.com/CorentinTh/it-tools），这是目前为止最轻松的一个项目了……只用我 Fork 一下原项目，去 Vercel 上部署（没报过错），然后去 Cloudflare 改一下 DNS，把 Vercel 给的域名换成我的网站域名就完了……真希望以后每个项目都能这么轻松……😂
+添加了一个很有意思的文本加密工具 Abracadabra 魔曰（https://github.com/SheepChef/Abracadabra）&gt;（所以为什么要去这么奇怪的名字啊喂），也没花多少时间，和 IT Tools 差不多吧，步骤也一样，不过中途发现 Fork 错项目了（？），没办法，看板娘可爱捏！~😘
+添加了一个很强大的、将宝可梦与轻度 Rogue 结合起来的在线小游戏，但是我目前还没时间玩（
+
+添加了 Groceries Box 杂货箱的分类功能以及视图切换功能（因为里边的东西越来越多了，这样子应该会方便些吧😎）
+]]></content>
+      <categories>
+        <category>更新说明</category>
+      </categories>
+      <tags>
         <tag>更新说明</tag>
       </tags>
   </entry>
@@ -115,36 +173,6 @@ Midtempo, Botanica, Drum ‘n Bass, UK Hardcore
       </categories>
       <tags>
         <tag>自我介绍</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>更新说明</title>
-    <url>/2026/03/11/%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E%202026.3.11/</url>
-    <content><![CDATA[2026.3.11 更新说明
-
-
-
-
-
-
-添加了 Groceries Box 里的 ASCII Art Converter 板块 (就是一个图片转 ASCII 字符画的小工具)。
-排版了 Groceries Box 的卡片样式。
-添加了 Groceries Box 里的 Emoji Combiner 板块，使用 Cloudflare Workers AI，调用模型 llama-4-scout-17b-16e-instruct ，通过 Cloudflare Workers 完成前后端对接。
-添加了 ASCII Art Converter 的 “切换显示底色” 功能，添加了一键复制生成结果的功能。
-添加了 Emoji Combiner 的表情选择数量，修改了表情显示的排列方式。
-修改了 ASCII Art Converter 的输出结果显示逻辑，修复了由于图片过大而导致无法完整显示输出结果的 Bug。
-由于 Cloudflare Workers AI在国内无法访问，Emoji Combiner 的输出结果无法显示，将 Emoji Combiner 本体移植到 Vercel 进行云端部署，借用 Vercel 的加速节点来实现访问 Cloudflare Workers AI。
-添加了 Groceries Box 卡片的边框特效样式。
-添加了 ASCII Art Converter 和 Emoji Combiner 的手机端适配。
-添加了 Groceries Box 里的 PDF Craft （https://github.com/PDFCraftTool/pdfcraft）这个开源 PDF 在线编辑器，将其部署到 Vercel 进行快速访问。
-修改了文章《收拾，整理，以及翻新…》里引用 GitHub 项目链接错误的问题。
-修改了一些文章和杂货箱卡片的 Tag。
-]]></content>
-      <categories>
-        <category>更新说明</category>
-      </categories>
-      <tags>
-        <tag>更新说明</tag>
       </tags>
   </entry>
 </search>

@@ -14,9 +14,9 @@ all: httpd client
 
 # 核心服务器构建逻辑：
 # 此处将主程序 httpd.c 与我们引入的二进制安全库 sds.c 进行联合编译。
-# 只有这样，主程序在调用 get_line_sds 时才能正确链接到 SDS 的内存管理逻辑。
-httpd: httpd.c sds.c
-	$(CC) $(CFLAGS) -o httpd httpd.c sds.c $(LIBS)
+# 线程池恢复后，thpool.c 也必须一起链接，否则主程序中的任务队列逻辑无法解析。
+httpd: httpd.c sds.c thpool.c
+	$(CC) $(CFLAGS) -o httpd httpd.c sds.c thpool.c $(LIBS)
 
 # 辅助测试客户端
 client: simpleclient.c

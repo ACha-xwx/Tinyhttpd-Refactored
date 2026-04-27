@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACha_'s Cyber Arcade 🕹️</title>
+  <style>
+    :root {
+      --primary: #0078E7;
+      --bg-body: #050505;
+      --sidebar-bg: rgba(5, 5, 5, 0.92);
+      --card-bg: rgba(22, 22, 22, 0.6);
+      --text: #e0e0e0;
+      --text-muted: rgba(224, 224, 224, 0.4);
+      --border: rgba(255, 255, 255, 0.05);
+      --grid-color: rgba(0, 120, 231, 0.05);
+      --main-gradient: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+    }
+
+    body.light-mode {
+      --bg-body: #f5f5f7;
+      --sidebar-bg: rgba(255, 255, 255, 0.85);
+      --card-bg: rgba(240, 240, 240, 0.8);
+      --text: #1d1d1f;
+      --text-muted: rgba(0, 0, 0, 0.5);
+      --border: rgba(0, 0, 0, 0.1);
+      --grid-color: rgba(0, 110, 208, 0.02);
+      --main-gradient: radial-gradient(circle at center, #fff 0%, #f0f0f0 100%);
+    }
+
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background-color: var(--bg-body);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: var(--text);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: -1;
+    }
+
+    .arcade-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar {
+      width: 320px;
+      height: 100%;
+      background: var(--sidebar-bg);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .sidebar.collapsed {
+      width: 0;
+      border-right: none;
+    }
+
+    .sidebar-content {
+      width: 320px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.3s;
+      background-image: radial-gradient(ellipse at top center, rgba(0, 120, 231, 0.15) 0%, transparent 350px);
+    }
+
+    .sidebar.collapsed .sidebar-content {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sidebar-header {
+      padding: 20px 15px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      position: relative;
+    }
+
+    .sidebar-title {
+      margin: 0;
+      color: var(--primary);
+      font-size: 1.2rem;
+      text-shadow: 0 0 10px var(--primary);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--primary);
+      opacity: 0.6;
+    }
+
+    .category-container {
+      padding: 5px 15px 15px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      background: transparent !important;
+      border-bottom: 1px solid var(--border);
+      cursor: grab;
+    }
+
+    .category-container::-webkit-scrollbar {
+      height: 3px;
+      background: transparent;
+    }
+
+    .category-container::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 0 5px var(--primary);
+    }
+
+    .category-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .cat-tab {
+      padding: 4px 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      font-size: 11px;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 0.3s;
+      color: var(--text-muted);
+    }
+
+    .cat-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    .search-container {
+      padding: 5px 15px 10px;
+      box-sizing: border-box;
+    }
+
+    #game-search {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .game-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 15px;
+    }
+
+    .game-card {
+      padding: 12px;
+      margin-bottom: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .game-card:hover {
+      background: rgba(0, 120, 231, 0.1);
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .main-display {
+      flex: 1;
+      position: relative;
+      background: var(--main-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .welcome-hint {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .welcome-hint h1 {
+      font-size: 80px;
+      margin: 0;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 60px;
+      background: var(--primary);
+      color: white;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .back-home,
+    .theme-toggle {
+      position: static;
+      /* 彻底废除绝对定位 */
+      font-size: 1.2rem;
+      color: var(--primary);
+      opacity: 0.6;
+      cursor: pointer;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 5px;
+      transition: 0.3s;
+    }
+
+    .back-home:hover,
+    .theme-toggle:hover {
+      opacity: 1;
+      transform: scale(1.1);
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    .mobile-fs-btn {
+      display: none;
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background: rgba(0, 120, 231, 0.8);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 120, 231, 0.5);
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: 0.3s;
+    }
+
+    .mobile-fs-btn:active {
+      transform: scale(0.9);
+    }
+
+    .sidebar-header h2 {
+      padding: 0 30px;
+    }
+
+    #emulator-target {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: absolute;
+        height: 100%;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .sidebar-content {
+        width: 280px;
+      }
+
+      .sidebar {
+        width: 280px;
+      }
+
+      .toggle-btn {
+        width: 30px;
+        height: 70px;
+        right: -30px;
+        font-size: 1.2rem;
+      }
+
+      .mobile-fs-btn {
+        display: flex;
+      }
+
+      .welcome-hint h1 {
+        font-size: 50px;
+      }
+
+      .welcome-hint .select-text {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="arcade-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-content">
+        <div class="sidebar-header">
+          <a href="/groceries" class="back-home" title="返回杂货箱">🏠</a>
+          <h2 class="sidebar-title">Cyber Arcade</h2>
+          <button class="theme-toggle" onclick="toggleTheme()" id="theme-icon">🌙</button>
+        </div>
+
+        <div class="category-container" id="category-tabs"></div>
+
+        <div class="search-container">
+          <input type="text" id="game-search" placeholder="在当前分类下搜索...">
+        </div>
+        <div class="game-list" id="list-container"></div>
+      </div>
+      <div class="toggle-btn" onclick="toggleSidebar()"><span id="arrow">◀</span></div>
+    </aside>
+
+    <main class="main-display">
+      <div id="emulator-target">
+        <div class="welcome-hint" id="hint">
+          <h1>🕹️</h1>
+          <p style="font-weight:bold; margin:15px 0 0; font-size:14px;">SELECT A GAME TO START</p>
+          <p style="color:var(--text-muted); font-size:11px; margin:5px 0 0;">ACha_'s Arcade Engine</p>
+        </div>
+      </div>
+      <div class="mobile-fs-btn" onclick="toggleFullScreen()" id="fs-btn">⛶</div>
+    </main>
+  </div>
+
+  <script>
+    const EJS_CDN = 'https://cdn.emulatorjs.org/stable/data/';
+    let currentLoader = null;
+    let allGames = [];
+    let currentCategory = 'ALL';
+
+    // 优雅的中文分类映射词典
+    const GENRE_LABELS = {
+      "ALL": "全部游戏", "ACT": "动作闯关", "RPG": "角色扮演",
+      "STG": "飞行射击", "RAC": "赛车竞速", "SLG": "策略战棋",
+      "SPT": "体育竞技", "FTG": "格斗对战", "PUZ": "益智解谜",
+      "TAB": "桌面棋牌", "EDU": "教育工具", "UNCATEGORIZED": "未分类"
+    };
+
+    async function init() {
+      applyTheme();
+      try {
+        // 读取最新的带有 genre 的数据
+        const response = await fetch('games.json');
+        allGames = await response.json();
+
+        // 自动提取现有的分类并生成标签
+        const existGenres = [...new Set(allGames.map(g => g.genre))];
+        const sortedGenres = ["ALL", ...existGenres.filter(g => g !== "ALL").sort()];
+
+        const tabContainer = document.getElementById('category-tabs');
+        sortedGenres.forEach(genre => {
+          const tab = document.createElement('div');
+          tab.className = `cat-tab ${genre === 'ALL' ? 'active' : ''}`;
+          tab.textContent = GENRE_LABELS[genre] || genre; // 如果词典里没有，直接显示英文
+          tab.onclick = () => filterByCategory(genre, tab);
+          tabContainer.appendChild(tab);
+        });
+
+        updateDisplay();
+        document.getElementById('game-search').oninput = () => updateDisplay();
+      } catch (err) { console.error("Data error"); }
+    }
+
+    function filterByCategory(category, tabElement) {
+      currentCategory = category;
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      tabElement.classList.add('active');
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const keyword = document.getElementById('game-search').value.toLowerCase();
+      const filtered = allGames.filter(game => {
+        const matchCategory = (currentCategory === 'ALL' || game.genre === currentCategory);
+        const matchSearch = game.name.toLowerCase().includes(keyword);
+        return matchCategory && matchSearch;
+      });
+      renderList(filtered);
+    }
+
+    function renderList(games) {
+      const container = document.getElementById('list-container');
+      container.innerHTML = '';
+      games.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.innerHTML = `<strong style="font-size:13px;">${game.name}</strong><div style="font-size:9px;opacity:0.5;margin-top:4px;">[${game.core.toUpperCase()}] ${GENRE_LABELS[game.genre] || game.genre}</div>`;
+        card.onclick = () => {
+          loadEmulator(game);
+          if (window.innerWidth < 800) toggleSidebar(); // 移动端自动收起侧边栏
+        };
+        container.appendChild(card);
+      });
+    }
+
+    function applyTheme() {
+      const theme = localStorage.getItem('arcadeTheme') || 'dark';
+      if (theme === 'light') document.body.classList.add('light-mode');
+      document.getElementById('theme-icon').textContent = theme === 'light' ? '☀️' : '🌙';
+    }
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light-mode');
+      localStorage.setItem('arcadeTheme', isLight ? 'light' : 'dark');
+      document.getElementById('theme-icon').textContent = isLight ? '☀️' : '🌙';
+    }
+    function toggleSidebar() {
+      const isCollapsed = document.getElementById('sidebar').classList.toggle('collapsed');
+      document.getElementById('arrow').textContent = isCollapsed ? '▶' : '◀';
+    }
+    function loadEmulator(game) {
+      document.getElementById('hint').style.display = 'none';
+      const target = document.getElementById('emulator-target');
+      target.innerHTML = '<div id="ejs-canvas" style="width:100%; height:100%;"></div>';
+      if (currentLoader) currentLoader.remove();
+      delete window.EJS_emulator;
+      setTimeout(() => {
+        window.EJS_player = '#ejs-canvas'; window.EJS_core = game.core;
+        window.EJS_gameUrl = game.url; window.EJS_pathtodata = EJS_CDN;
+        const s = document.createElement('script'); s.src = EJS_CDN + 'loader.js';
+        document.body.appendChild(s); currentLoader = s;
+      }, 50);
+    }
+    function toggleFullScreen() {
+      const doc = window.document;
+      const docEl = doc.documentElement; // 让整个网页全屏，覆盖地址栏
+      const fsBtn = document.getElementById('fs-btn');
+
+      const requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+      const cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+      if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+        requestFullScreen.call(docEl);
+        fsBtn.innerHTML = '✖'; // 切换为退出图标
+        fsBtn.style.background = 'rgba(255, 50, 50, 0.6)'; // 全屏后按钮变红虚化，防误触
+      } else {
+        cancelFullScreen.call(doc);
+        fsBtn.innerHTML = '⛶';
+        fsBtn.style.background = 'rgba(0, 120, 231, 0.8)';
+      }
+    }
+
+    init();
+
+    const slider = document.getElementById('category-tabs');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.style.cursor = 'grabbing';
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.style.cursor = 'pointer';
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.style.cursor = 'pointer';
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+  </script>
+</body>
+
+</html>

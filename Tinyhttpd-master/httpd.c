@@ -13,9 +13,11 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "sds.h"  // 引入 SDS 库，替换掉原版那个不安全的 buf[1024]
+#include "thpool.h"
 
 #define ISspace(x) isspace((int)(x))
 #define SERVER_STRING "Server: Tinyhttpd-Refactored/1.0.0\r\n"
+#define THREAD_POOL_SIZE 4
 #define STDIN   0
 #define STDOUT  1
 #define STDERR  2
@@ -151,6 +153,7 @@ void accept_request(void *arg) {
         query_string = url;
         while ((*query_string != '?') && (*query_string != '\0')) query_string++;
         if (*query_string == '?') {
+            cgi = 1;
             *query_string = '\0';
             query_string++;
         }
@@ -166,7 +169,17 @@ void accept_request(void *arg) {
             numchars = get_line_sds(client, &buf);
         not_found(client);
     } else {
-        if ((st.st_mode & S_IFMT) == S_IFDIR) strcat(path, "/index.html");
+        if ((st.st_mode & S_IFMT) == S_IFDIR) {
+            // 如果访问的是目录但没带斜杠，发送 301 重定向，强制浏览器加上 '/'
+            char redirect_header[512];
+            sprintf(redirect_header, "HTTP/1.1 301 Moved Permanently\r\nLocation: %s/\r\n\r\n", url);
+            send(client, redirect_header, strlen(redirect_header), 0);
+            
+            sdsfree(buf);  // 释放资源
+            close(client); // 断开连接，等待浏览器带上 '/' 重新发起请求
+            return;
+        }
+        if ((st.st_mode & S_IXUSR) || (st.st_mode & S_IXGRP) || (st.st_mode & S_IXOTH)) cgi = 1;
         
         if (!cgi) serve_file(client, path);
         else execute_cgi(client, path, method, query_string);
@@ -369,18 +382,25 @@ int main(void) {
     int client_sock = -1;
     struct sockaddr_in client_name;
     socklen_t client_name_len = sizeof(client_name);
-    pthread_t newthread;
+    threadpool thpool = NULL;
     
+    thpool = thpool_init(THREAD_POOL_SIZE);
+    if (thpool == NULL) error_die("thpool_init");
+
     server_sock = startup(&port);
-    printf("httpd running on port %d\n", port);
+    printf("httpd running on port %d with %d worker threads\n", port, THREAD_POOL_SIZE);
     
     while (1) {
         client_sock = accept(server_sock, (struct sockaddr *)&client_name, &client_name_len);
         if (client_sock == -1) error_die("accept");
         
-        // 这里为了简单直接把 socket 转成指针传进去，严格来说应该 malloc 内存传进去防止竞争，但作业这样够了
-        pthread_create(&newthread, NULL, (void *)accept_request, (void *)(intptr_t)client_sock);
+        if (thpool_add_work(thpool, accept_request, (void *)(intptr_t)client_sock) != 0) {
+            close(client_sock);
+            perror("thpool_add_work");
+        }
     }
+
+    thpool_destroy(thpool);
     close(server_sock);
     return(0);
 }
